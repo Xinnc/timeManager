@@ -2,7 +2,6 @@
 
 namespace App\Domains\User\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Domains\Project\Model\Project;
 use App\Domains\Shared\Model\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,8 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -45,6 +45,13 @@ class User extends Authenticatable
 
     public function getRoleNameAttribute():? String {
         return $this->role?->role;
+    }
+
+    public function getJWTIdentifier():string {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims(): array {
+        return [];
     }
 
     /**

@@ -8,7 +8,7 @@ use App\Domains\User\Models\User;
 class ProjectPolicy
 {
 
-    public function before($user, $ability){
+    public function before(User $user, $ability){
         if($user->role_name === 'admin'){
             return true;
         }
@@ -19,7 +19,7 @@ class ProjectPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,7 +27,7 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -35,7 +35,7 @@ class ProjectPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_name != 'employee' ? true : false;
+        return $user->role_name === 'manager';
     }
 
     /**
@@ -43,6 +43,9 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project): bool
     {
+        if($user->role_name === 'manager') {
+            return $project->manager_id === $user->id;
+        }
         return false;
     }
 
@@ -51,6 +54,9 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project): bool
     {
+        if($user->role_name === 'manager') {
+            return $project->manager_id === $user->id;
+        }
         return false;
     }
 

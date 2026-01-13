@@ -17,6 +17,10 @@ class Project extends Model
         'status'
     ];
 
+    protected $with = [
+        'manager'
+    ];
+
     protected $casts = [
         'status' => ProjectStatus::class,
     ];
