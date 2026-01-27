@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Domains\User\Actions\LoginUserAction;
-use App\Domains\User\Actions\LogoutUserAction;
-use App\Domains\User\Actions\RegisterUserAction;
+use App\Domains\User\Actions\Auth\LoginUserAction;
+use App\Domains\User\Actions\Auth\LogoutUserAction;
+use App\Domains\User\Actions\Auth\RegisterUserAction;
 use App\Domains\User\DataTransferObjects\LoginUserData;
 use App\Domains\User\DataTransferObjects\RegisterUserData;
 use App\Http\Controllers\Controller;

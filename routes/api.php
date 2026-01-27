@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Project\ProjectController;
+use App\Http\Controllers\Shared\ProgramController;
 use App\Http\Controllers\Task\TaskController;
 use App\Http\Controllers\TimeEntry\TimeEntryController;
 use App\Http\Controllers\User\AuthController;
@@ -37,5 +38,11 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('/time_entry', TimeEntryController::class);
 
     //профиль
-    Route::apiResource('/profile/{user}', ProfileController::class);
+    Route::get('/profile', [ProfileController::class, 'show']);
+    Route::patch('/profile', [ProfileController::class, 'update']);
+    Route::patch('/profile/password', [ProfileController::class, 'updatePassword']);
+//    Route::apiResource('/profile', ProfileController::class);
+
+    Route::patch('program/{program}/status', [ProgramController::class, 'isActive']);
+    Route::apiResource('/program', ProgramController::class)->only(['index', 'store', 'update', 'destroy']);
 });

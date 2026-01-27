@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\User\Actions;
+namespace App\Domains\User\Actions\Auth;
 
 use App\Domains\User\DataTransferObjects\RegisterUserData;
 use App\Domains\User\Exceptions\EmailAlreadyExistException;

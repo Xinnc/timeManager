@@ -6,7 +6,7 @@ return [
     'numeric' => 'Поле :attribute должно быть числом',
     'string' => 'Поле :attribute должно быть строкой.',
     'integer' => 'Поле :attribute должно быть целым числом.',
-    'boolean' => 'Поле :attribute должно быть логическим значением.',
+    'boolean' => 'Поле :attribute должно быть логическим значением (true/false).',
     'date' => 'Поле :attribute должно быть корректной датой.',
     'date_format' => 'Поле :attribute должно соответствовать формату: :format.',
     'after_or_equal' => 'Поле :attribute должно быть датой после или равной :date.',
@@ -24,4 +24,10 @@ return [
         'string' => 'Поле :attribute должно содержать минимум :min символов.',
         'numeric' => 'Поле :attribute должно быть не меньше :min.',
     ],
+
+    'attributes' => [
+        'name' => 'название',
+        'is_active' => 'активность',
+    ],
+
 ];

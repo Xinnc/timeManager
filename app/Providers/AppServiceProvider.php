@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Domains\Project\Model\Project;
 use App\Domains\Project\Policies\ProjectPolicy;
+use App\Domains\Shared\Model\Program;
+use App\Domains\Shared\Policies\ProgramPolicy;
 use App\Domains\Task\Model\Task;
 use App\Domains\Task\Policies\TaskPolicy;
 use App\Domains\TimeEntry\Model\TimeEntry;
@@ -29,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Project::class, ProjectPolicy::class);
         Gate::policy(Task::class, TaskPolicy::class);
         Gate::policy(TimeEntry::class, TimeEntryPolicy::class);
+        Gate::policy(Program::class, ProgramPolicy::class);
     }
 }
