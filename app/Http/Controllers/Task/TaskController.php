@@ -21,9 +21,12 @@ class TaskController extends Controller
         $this->authorizeResource(Task::class, 'task');
         $this->middleware('can:updateStatus,task')->only(['updateStatus']);
     }
-    public function allTasks(FilterTaskData $filter){
+
+    public function allTasks(FilterTaskData $filter)
+    {
         return TaskResource::collection(Task::filter($filter)->paginate(15));
     }
+
     public function index(Project $project, FilterTaskData $filter)
     {
         $tasks = Task::where('project_id', $project->id)
@@ -32,12 +35,14 @@ class TaskController extends Controller
 
         return TaskResource::collection($tasks);
     }
+
     public function show(Project $project, Task $task)
     {
         return response()->json([
             'task' => new TaskResource($task),
         ]);
     }
+
     public function store(StoreTaskData $data, Project $project)
     {
         return response()->json([
@@ -45,6 +50,7 @@ class TaskController extends Controller
             'task' => new TaskResource(StoreTaskAction::execute($data, $project)),
         ], 201);
     }
+
     public function update(UpdateTaskData $data, Project $project, Task $task)
     {
         return response()->json([
@@ -52,11 +58,13 @@ class TaskController extends Controller
             'task' => new TaskResource(UpdateTaskAction::execute($data, $task))
         ]);
     }
+
     public function destroy(Task $task)
     {
         $task->delete();
         return response()->json([], 204);
     }
+
     public function updateStatus(StatusUpdateTaskData $data, Task $task)
     {
         return response()->json([

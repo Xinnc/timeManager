@@ -2,7 +2,6 @@
 
 namespace App\Domains\TimeEntry\Actions;
 
-
 use App\Domains\Shared\Exceptions\ConflictHttpException;
 use App\Domains\TimeEntry\DataTransferObjects\StartTimeEntryData;
 use App\Domains\TimeEntry\Model\TimeEntry;
@@ -12,8 +11,8 @@ class StartTimeEntryAction
 {
     public static function execute(StartTimeEntryData $data): TimeEntry
     {
-        if(TimeEntry::where('user_id', auth()->id())->whereNull('end_time')->exists()){
-            throw new ConflictHttpException(409,'У вас уже есть активная запись времени.');
+        if (TimeEntry::where('user_id', auth()->id())->whereNull('end_time')->exists()) {
+            throw new ConflictHttpException(409, 'У вас уже есть активная запись времени.');
         }
 
         $timeEntry = TimeEntry::create([

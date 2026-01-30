@@ -37,19 +37,23 @@ class TimeEntry extends Model
         'program',
     ];
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function project(): BelongsTo {
+    public function project(): BelongsTo
+    {
         return $this->belongsTo(Project::class, 'project_id');
     }
 
-    public function task(): BelongsTo {
+    public function task(): BelongsTo
+    {
         return $this->belongsTo(Task::class, 'task_id');
     }
 
-    public function program(): BelongsTo {
+    public function program(): BelongsTo
+    {
         return $this->belongsTo(Program::class, 'program_id');
     }
 

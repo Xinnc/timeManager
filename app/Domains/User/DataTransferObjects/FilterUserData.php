@@ -3,11 +3,8 @@
 namespace App\Domains\User\DataTransferObjects;
 
 use App\Domains\Shared\Concerns\ValidationError;
-use Spatie\LaravelData\Attributes\WithCast;
-use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Attributes\Validation\{Nullable, IntegerType, BooleanType, Date, Min, StringType};
-use Carbon\Carbon;
+use Spatie\LaravelData\Attributes\Validation\{Nullable, BooleanType, Min, StringType};
 
 class FilterUserData extends Data
 {
@@ -18,11 +15,14 @@ class FilterUserData extends Data
         public ?string $search,
 
         #[Nullable, BooleanType]
-        public ?bool $role_id,
+        public ?bool   $role_id,
 
         #[Nullable, BooleanType]
-        public ?bool $is_banned,
-    ) {}
+        public ?bool   $is_banned,
+    )
+    {
+    }
+
     public static function attributes(): array
     {
         return [

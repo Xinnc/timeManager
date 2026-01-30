@@ -19,13 +19,13 @@ class UpdateTimeEntryData extends Data
 
     public function __construct(
         #[Nullable, Exists('projects', 'id')]
-        public ?int $project_id,
+        public ?int    $project_id,
 
         #[Nullable, Exists('tasks', 'id')]
-        public ?int $task_id,
+        public ?int    $task_id,
 
         #[Nullable, Exists('programs', 'id')]
-        public ?int $program_id,
+        public ?int    $program_id,
 
         #[Nullable, Date, AfterOrEqual('1900-01-01'), BeforeOrEqual('2100-01-01')]
         #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d H:i', 'd/m/Y H:i', 'd.m.Y H:i', 'Y-m-d', 'd.m.Y', 'd/m/Y'])]
@@ -34,16 +34,18 @@ class UpdateTimeEntryData extends Data
         #[Nullable, Date, AfterOrEqual('1900-01-01'), BeforeOrEqual('2100-01-01')]
         #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d H:i', 'd/m/Y H:i', 'd.m.Y H:i', 'Y-m-d', 'd.m.Y', 'd/m/Y'])]
         public ?Carbon $end_time,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
-            'project_id'       => 'проект',
-            'task_id'          => 'задача',
-            'program_id'       => 'программа',
-            'start_time'       => 'время начала',
-            'end_time'         => 'время окончания',
+            'project_id' => 'проект',
+            'task_id' => 'задача',
+            'program_id' => 'программа',
+            'start_time' => 'время начала',
+            'end_time' => 'время окончания',
         ];
     }
 

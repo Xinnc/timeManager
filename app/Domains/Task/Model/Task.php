@@ -27,17 +27,20 @@ class Task extends Model
         'project'
     ];
 
-    public function project(): BelongsTo{
+    public function project(): BelongsTo
+    {
         return $this->belongsTo(Project::class);
     }
-    public function timeEntries(): HasMany{
+
+    public function timeEntries(): HasMany
+    {
         return $this->hasMany(TimeEntry::class);
     }
 
     public function scopeFilter($query, FilterTaskData $filter)
     {
         return $query
-            ->when($filter->status, fn ($q) => $q->where('status', $filter->status))
-            ->when($filter->search, fn ($q) => $q->where('name', 'like', "%{$filter->search}%"));
+            ->when($filter->status, fn($q) => $q->where('status', $filter->status))
+            ->when($filter->search, fn($q) => $q->where('name', 'like', "%{$filter->search}%"));
     }
 }

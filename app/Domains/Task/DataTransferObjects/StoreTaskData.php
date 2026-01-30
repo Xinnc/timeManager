@@ -19,12 +19,14 @@ class StoreTaskData extends Data
 
         #[Required, StringType, Min(1), Max(1000)]
         public string $description,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
-            'name'       => 'название',
+            'name' => 'название',
             'description' => 'описание',
         ];
     }

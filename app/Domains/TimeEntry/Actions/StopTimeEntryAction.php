@@ -2,7 +2,6 @@
 
 namespace App\Domains\TimeEntry\Actions;
 
-
 use App\Domains\Shared\Exceptions\ConflictHttpException;
 use App\Domains\TimeEntry\Model\TimeEntry;
 use Carbon\Carbon;

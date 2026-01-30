@@ -4,6 +4,7 @@ namespace App\Domains\User\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
+
 class ProfileResource extends JsonResource
 {
     public function toArray(Request $request): array

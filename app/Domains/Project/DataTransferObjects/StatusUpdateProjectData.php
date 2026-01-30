@@ -15,7 +15,9 @@ class StatusUpdateProjectData extends Data
     public function __construct(
         #[Required, Enum(ProjectStatus::class)]
         public string $status,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {

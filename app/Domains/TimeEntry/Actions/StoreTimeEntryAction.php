@@ -2,7 +2,6 @@
 
 namespace App\Domains\TimeEntry\Actions;
 
-
 use App\Domains\TimeEntry\DataTransferObjects\StoreTimeEntryData;
 use App\Domains\TimeEntry\Model\TimeEntry;
 

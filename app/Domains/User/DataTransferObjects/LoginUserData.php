@@ -20,13 +20,15 @@ class LoginUserData extends Data
 
         #[Required, StringType, Min(6), Max(30)]
         public string $password,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
-            'email'      => 'почта',
-            'password'   => 'пароль',
+            'email' => 'почта',
+            'password' => 'пароль',
         ];
     }
 }

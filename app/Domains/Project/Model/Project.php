@@ -27,19 +27,21 @@ class Project extends Model
         'status' => ProjectStatus::class,
     ];
 
-    public function manager(): BelongsTo {
+    public function manager(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
     public function scopeFilter($query, FilterProjectData $filter)
     {
         return $query
-            ->when($filter->status, fn ($q) => $q->where('status', $filter->status))
-            ->when($filter->manager_id, fn ($q) => $q->where('manager_id', $filter->manager_id))
-            ->when($filter->deadline_from, fn ($q) => $q->whereDate('deadline', '>=', $filter->deadline_from))
-            ->when($filter->deadline_to, fn ($q) => $q->whereDate('deadline', '<=', $filter->deadline_to))
-            ->when($filter->search, fn ($q) => $q->where('name', 'ilike', "%{$filter->search}%"));
+            ->when($filter->status, fn($q) => $q->where('status', $filter->status))
+            ->when($filter->manager_id, fn($q) => $q->where('manager_id', $filter->manager_id))
+            ->when($filter->deadline_from, fn($q) => $q->whereDate('deadline', '>=', $filter->deadline_from))
+            ->when($filter->deadline_to, fn($q) => $q->whereDate('deadline', '<=', $filter->deadline_to))
+            ->when($filter->search, fn($q) => $q->where('name', 'ilike', "%{$filter->search}%"));
     }
+
     public function scopeSortByDeadline($query, SortDirection $direction)
     {
         return $query->orderBy('deadline', $direction->value);

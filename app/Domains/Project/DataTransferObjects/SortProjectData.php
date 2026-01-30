@@ -11,7 +11,9 @@ class SortProjectData extends Data
     public function __construct(
         #[In(['asc', 'desc'])]
         public SortDirection $deadline = SortDirection::ASC,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {

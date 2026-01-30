@@ -15,13 +15,11 @@ class UpdatePasswordUserAction
         $user = auth()->user();
 
 
-        if(!Hash::check($data->old_password, $user->password))
-        {
+        if (!Hash::check($data->old_password, $user->password)) {
             throw new ValidationFailedException(422, "Неверный старый пароль!");
         }
 
-        if(Hash::check($data->password, $user->password))
-        {
+        if (Hash::check($data->password, $user->password)) {
             throw new ValidationFailedException(422, "Данный пароль уже установлен!");
         }
 

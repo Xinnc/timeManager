@@ -19,12 +19,14 @@ class UpdateTaskData extends Data
 
         #[Nullable, StringType, Min(1), Max(1000)]
         public ?string $description,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
-            'name'       => 'название',
+            'name' => 'название',
             'description' => 'описание',
         ];
     }
@@ -33,10 +35,10 @@ class UpdateTaskData extends Data
     {
         $filled = [];
 
-        if($this->name !== null) {
+        if ($this->name !== null) {
             $filled['name'] = $this->name;
         }
-        if($this->description !== null) {
+        if ($this->description !== null) {
             $filled['description'] = $this->description;
         }
         return $filled;

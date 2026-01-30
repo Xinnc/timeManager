@@ -13,21 +13,23 @@ class StartTimeEntryData extends Data
 
     public function __construct(
         #[Nullable, Exists('projects', 'id')]
-        public int $project_id,
+        public int  $project_id,
 
         #[Nullable, Exists('tasks', 'id')]
         public ?int $task_id,
 
         #[Nullable, Exists('programs', 'id')]
         public ?int $program_id,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
-            'project_id'       => 'проект',
-            'task_id'          => 'задача',
-            'program_id'       => 'программа',
+            'project_id' => 'проект',
+            'task_id' => 'задача',
+            'program_id' => 'программа',
         ];
     }
 }

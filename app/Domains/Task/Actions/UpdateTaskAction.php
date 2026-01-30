@@ -12,7 +12,7 @@ class UpdateTaskAction
     {
         $updates = $data->getFilledFields();
 
-        if(!empty($updates)){
+        if (!empty($updates)) {
             $task->update($updates);
         }
 

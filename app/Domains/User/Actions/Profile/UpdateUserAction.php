@@ -14,10 +14,10 @@ class UpdateUserAction
         $user = auth()->user();
         $fields = $data->getFilledFields();
 
-        if(isset($fields["password"])){
+        if (isset($fields["password"])) {
             $fields["password"] = Hash::make($fields["password"]);
         }
-        if(!empty($fields)){
+        if (!empty($fields)) {
             $user->update($fields);
         }
 

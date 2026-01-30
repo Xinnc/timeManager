@@ -34,11 +34,6 @@ class User extends Authenticatable implements JWTSubject
         'is_banned'
     ];
 
-    public function role(): BelongsTo
-    {
-        return $this->belongsTo(Role::class);
-    }
-
     public function timeEntries(): HasMany
     {
         return $this->hasMany(TimeEntry::class);
@@ -52,6 +47,11 @@ class User extends Authenticatable implements JWTSubject
     public function projectManager(): HasMany
     {
         return $this->hasMany(Project::class, 'manager_id');
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
     }
 
     public function getRoleNameAttribute(): ?string
@@ -72,9 +72,9 @@ class User extends Authenticatable implements JWTSubject
     public function scopeFilter($query, FilterUserData $filter)
     {
         return $query
-            ->when($filter->role_id, fn ($q) => $q->where('role_id', $filter->role_id))
-            ->when($filter->is_banned, fn ($q) => $q->where('is_banned', $filter->is_banned))
-            ->when($filter->search, fn ($q) => $q->where(function ($qq) use ($filter) {
+            ->when($filter->role_id, fn($q) => $q->where('role_id', $filter->role_id))
+            ->when($filter->is_banned, fn($q) => $q->where('is_banned', $filter->is_banned))
+            ->when($filter->search, fn($q) => $q->where(function ($qq) use ($filter) {
                 $qq->where('first_name', 'ilike', "%{$filter->search}%")
                     ->orWhere('surname', 'ilike', "%{$filter->search}%")
                     ->orWhere('email', 'ilike', "%{$filter->search}%");

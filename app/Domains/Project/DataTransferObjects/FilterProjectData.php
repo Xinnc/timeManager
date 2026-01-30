@@ -19,20 +19,22 @@ class FilterProjectData extends Data
         public ?ProjectStatus $status,
 
         #[Nullable, Exists('users', 'id')]
-        public ?int $manager_id,
+        public ?int           $manager_id,
 
         #[Nullable, Date]
         #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d', 'd.m.Y', 'd/m/Y'])]
-
-        public ?Carbon $deadline_from,
+        public ?Carbon        $deadline_from,
 
         #[Nullable, Date]
         #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d', 'd.m.Y', 'd/m/Y'])]
-        public ?Carbon $deadline_to,
+        public ?Carbon        $deadline_to,
 
         #[Nullable, StringType]
-        public ?string $search,
-    ) {}
+        public ?string        $search,
+    )
+    {
+    }
+
     public static function attributes(): array
     {
         return [

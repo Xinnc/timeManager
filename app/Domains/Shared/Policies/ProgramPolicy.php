@@ -11,9 +11,10 @@ class ProgramPolicy
 
     public function before(User $user)
     {
-        if($user->role_name === 'admin') return true;
+        if ($user->role_name === 'admin') return true;
         return null;
     }
+
     /**
      * Determine whether the user can view any models.
      */

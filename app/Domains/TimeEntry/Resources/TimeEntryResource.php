@@ -4,6 +4,7 @@ namespace App\Domains\TimeEntry\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
+
 class TimeEntryResource extends JsonResource
 {
     public function toArray(Request $request): array

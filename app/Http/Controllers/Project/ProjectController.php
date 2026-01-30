@@ -31,10 +31,12 @@ class ProjectController extends Controller
 
         return ProjectResource::collection($projects);
     }
+
     public function show(Project $project)
     {
         return response()->json(new ProjectResource($project));
     }
+
     public function store(StoreProjectData $data)
     {
         return response()->json([
@@ -42,6 +44,7 @@ class ProjectController extends Controller
             'project' => new ProjectResource(StoreProjectAction::execute($data))
         ], 201);
     }
+
     public function update(UpdateProjectData $data, Project $project)
     {
         return response()->json([
@@ -49,10 +52,11 @@ class ProjectController extends Controller
             'project' => new ProjectResource(UpdateProjectAction::execute($data, $project))
         ]);
     }
+
     public function destroy(Project $project)
     {
         $project->delete();
-        return response()->json([],204);
+        return response()->json([], 204);
     }
 
     public function updateStatus(StatusUpdateProjectData $data, Project $project)

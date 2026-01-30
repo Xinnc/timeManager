@@ -13,12 +13,14 @@ class TaskPolicy
      * Determine whether the user can view any models.
      */
 
-    public function before(User $user, $ability){
-        if($user->role_name === 'admin'){
+    public function before(User $user, $ability)
+    {
+        if ($user->role_name === 'admin') {
             return true;
         }
         return null;
     }
+
     public function viewAny(User $user): bool
     {
         return true;
@@ -37,7 +39,7 @@ class TaskPolicy
      */
     public function create(User $user): bool
     {
-        if($user->role_name === 'manager'){
+        if ($user->role_name === 'manager') {
             return true;
         }
         throw new ForbiddenForYouException();
@@ -48,7 +50,7 @@ class TaskPolicy
      */
     public function update(User $user, Project $project): bool
     {
-        if($user->role_name === 'manager') {
+        if ($user->role_name === 'manager') {
             return $project->manager_id === $user->id;
         }
         throw new ForbiddenForYouException();
@@ -59,7 +61,7 @@ class TaskPolicy
      */
     public function delete(User $user, Project $project): bool
     {
-        if($user->role_name === 'manager') {
+        if ($user->role_name === 'manager') {
             return $project->manager_id === $user->id;
         }
         throw new ForbiddenForYouException();

@@ -12,7 +12,7 @@ class UpdateProjectAction
     {
         $updates = $data->getFilledFields();
 
-        if(!empty($updates)){
+        if (!empty($updates)) {
             $project->update($updates);
         }
 

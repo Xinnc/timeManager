@@ -3,9 +3,7 @@
 namespace App\Domains\User\DataTransferObjects;
 
 use App\Domains\Shared\Concerns\ValidationError;
-use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Attributes\Validation\Required;
-use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Attributes\Validation\Unique;
 use Spatie\LaravelData\Data;
 

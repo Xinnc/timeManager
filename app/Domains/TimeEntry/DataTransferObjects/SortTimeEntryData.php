@@ -11,7 +11,9 @@ class SortTimeEntryData extends Data
     public function __construct(
         #[In(['asc', 'desc'])]
         public SortDirection $sort_by_time = SortDirection::DESC,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {

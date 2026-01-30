@@ -11,7 +11,7 @@ class RegisterUserAction
 {
     public static function execute(RegisterUserData $data): User
     {
-        if(User::where('email', $data->email)->first()) throw new EmailAlreadyExistException();
+        if (User::where('email', $data->email)->first()) throw new EmailAlreadyExistException();
         $user = User::create([
             'first_name' => $data->first_name,
             'surname' => $data->surname,

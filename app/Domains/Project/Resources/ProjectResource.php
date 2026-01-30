@@ -4,6 +4,7 @@ namespace App\Domains\Project\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
+
 class ProjectResource extends JsonResource
 {
     public function toArray(Request $request): array

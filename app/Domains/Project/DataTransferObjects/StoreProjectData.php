@@ -24,14 +24,16 @@ class StoreProjectData extends Data
         #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d', 'd.m.Y', 'd/m/Y'])]
         #[AfterOrEqual('today')]
         public Carbon $deadline,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
-            'name'       => 'название',
+            'name' => 'название',
             'description' => 'описание',
-            'deadline'   => 'дедлайн',
+            'deadline' => 'дедлайн',
         ];
     }
 }

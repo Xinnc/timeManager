@@ -15,7 +15,9 @@ class StatusUpdateTaskData extends Data
     public function __construct(
         #[Required, Enum(TaskStatus::class)]
         public ?string $status,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {

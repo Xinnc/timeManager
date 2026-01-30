@@ -2,7 +2,6 @@
 
 namespace App\Domains\TimeEntry\Actions;
 
-
 use App\Domains\TimeEntry\DataTransferObjects\UpdateTimeEntryData;
 use App\Domains\TimeEntry\Model\TimeEntry;
 
@@ -12,7 +11,7 @@ class UpdateTimeEntryAction
     {
         $updates = $data->getFilledFields();
 
-        if(!empty($updates)){
+        if (!empty($updates)) {
             $timeEntry->update($updates);
         }
 

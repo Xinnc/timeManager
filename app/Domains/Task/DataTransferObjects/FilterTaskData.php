@@ -16,8 +16,11 @@ class FilterTaskData extends Data
         public ?TaskStatus $status,
 
         #[Nullable, StringType]
-        public ?string $search,
-    ) {}
+        public ?string     $search,
+    )
+    {
+    }
+
     public static function attributes(): array
     {
         return [

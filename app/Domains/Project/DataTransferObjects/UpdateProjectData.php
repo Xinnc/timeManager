@@ -24,14 +24,16 @@ class UpdateProjectData extends Data
         #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d', 'd.m.Y', 'd/m/Y'])]
         #[AfterOrEqual('today')]
         public ?Carbon $deadline,
-    ) {}
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
-            'name'       => 'название',
+            'name' => 'название',
             'description' => 'описание',
-            'deadline'   => 'дедлайн',
+            'deadline' => 'дедлайн',
         ];
     }
 
@@ -39,10 +41,10 @@ class UpdateProjectData extends Data
     {
         $filled = [];
 
-        if($this->name !== null) {
+        if ($this->name !== null) {
             $filled['name'] = $this->name;
         }
-        if($this->description !== null) {
+        if ($this->description !== null) {
             $filled['description'] = $this->description;
         }
         if ($this->deadline !== null) {

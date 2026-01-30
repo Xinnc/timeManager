@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Domains\Shared\Exceptions\ValidationFailedException;
 use App\Domains\Shared\Model\Role;
 use App\Domains\TimeEntry\Resources\TimeEntryResource;
 use App\Domains\User\Actions\Admin\BanUserAction;
@@ -18,10 +17,14 @@ use App\Domains\User\DataTransferObjects\UpdateRoleUserData;
 use App\Domains\User\Models\User;
 use App\Domains\User\Resources\ProfileResource;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Client\Request;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin-access');
+    }
+
     public function updateRole(UpdateRoleUserData $data, User $user)
     {
         return response()->json([

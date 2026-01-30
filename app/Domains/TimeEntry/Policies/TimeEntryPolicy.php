@@ -14,11 +14,12 @@ class TimeEntryPolicy
 
     public function before($user, $ability)
     {
-        if($user->role_name === 'admin'){
+        if ($user->role_name === 'admin') {
             return true;
         }
         return null;
     }
+
     public function viewAny(User $user): bool
     {
         return true;
@@ -58,7 +59,7 @@ class TimeEntryPolicy
      */
     public function delete(User $user, TimeEntry $timeEntry): bool
     {
-        if($user->role_name === 'moderator'){
+        if ($user->role_name === 'moderator') {
             return true;
         }
         throw new ForbiddenForYouException();

@@ -13,10 +13,10 @@ class LoginUserAction
     public static function execute(LoginUserData $data): string
     {
         $user = User::where('email', $data->email)->first();
-        if(!$user || !Auth::attempt([
-            'email' => $data->email,
-            'password' => $data->password
-        ])) throw new FailedLoginException();
+        if (!$user || !Auth::attempt([
+                'email' => $data->email,
+                'password' => $data->password
+            ])) throw new FailedLoginException();
         $token = JWTAuth::fromUser($user);
         return $token;
     }

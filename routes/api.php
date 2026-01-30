@@ -42,11 +42,12 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show']);
     Route::patch('/profile', [ProfileController::class, 'update']);
     Route::patch('/profile/password', [ProfileController::class, 'updatePassword']);
-//    Route::apiResource('/profile', ProfileController::class);
 
+    //настройка программ
     Route::patch('program/{program}/status', [ProgramController::class, 'isActive']);
     Route::apiResource('/program', ProgramController::class)->only(['index', 'store', 'update', 'destroy']);
 
+    //просмотр всех пользователей админом
     Route::get('/users', [AdminController::class, 'getUsers']);
 
     Route::get('/role', [AdminController::class, 'getRoles']);

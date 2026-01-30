@@ -17,29 +17,31 @@ class RegisterUserData extends Data
 
     public function __construct(
         #[Required, StringType, Max(255), Min(1)]
-        public string $first_name,
+        public string  $first_name,
 
         #[Required, StringType, Max(255), Min(1)]
-        public string $surname,
+        public string  $surname,
 
         #[Nullable, StringType, Max(255)]
         public ?string $last_name,
 
         #[Required, Email, Max(255)]
-        public string $email,
+        public string  $email,
 
         #[Required, StringType, Min(6), Max(30)]
-        public string $password,
-    ) {}
+        public string  $password,
+    )
+    {
+    }
 
     public static function attributes(): array
     {
         return [
             'first_name' => 'имя',
-            'surname'    => 'фамилия',
-            'last_name'  => 'отчество',
-            'email'      => 'почта',
-            'password'   => 'пароль',
+            'surname' => 'фамилия',
+            'last_name' => 'отчество',
+            'email' => 'почта',
+            'password' => 'пароль',
         ];
     }
 }

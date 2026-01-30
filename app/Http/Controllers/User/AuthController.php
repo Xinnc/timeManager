@@ -12,7 +12,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function register(RegisterUserData $data){
+    public function register(RegisterUserData $data)
+    {
         $user = RegisterUserAction::execute($data);
         $token = JWTAuth::fromUser($user);
         return response()->json([
@@ -21,7 +22,8 @@ class AuthController extends Controller
         ], 201);
     }
 
-    public function login(LoginUserData $data){
+    public function login(LoginUserData $data)
+    {
         $token = LoginUserAction::execute($data);
         return response()->json([
             'message' => 'Вы успешно авторизовались.',
@@ -29,8 +31,9 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout(){
+    public function logout()
+    {
         LogoutUserAction::execute();
-        return response()->noContent( 204);
+        return response()->noContent(204);
     }
 }
