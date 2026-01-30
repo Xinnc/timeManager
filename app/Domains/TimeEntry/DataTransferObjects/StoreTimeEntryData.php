@@ -44,8 +44,6 @@ class StoreTimeEntryData extends Data
             'program_id'       => 'программа',
             'start_time'       => 'время начала',
             'end_time'         => 'время окончания',
-            'duration_minutes' => 'продолжительность',
-            'is_manual'        => 'тип ввода времени',
         ];
     }
     public static function messages(): array

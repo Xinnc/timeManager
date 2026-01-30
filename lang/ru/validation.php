@@ -6,7 +6,7 @@ return [
     'numeric' => 'Поле :attribute должно быть числом',
     'string' => 'Поле :attribute должно быть строкой.',
     'integer' => 'Поле :attribute должно быть целым числом.',
-    'boolean' => 'Поле :attribute должно быть логическим значением (true/false).',
+    'boolean' => 'Поле :attribute должно быть логическим значением (1/0).',
     'date' => 'Поле :attribute должно быть корректной датой.',
     'date_format' => 'Поле :attribute должно соответствовать формату: :format.',
     'after_or_equal' => 'Поле :attribute должно быть датой после или равной :date.',

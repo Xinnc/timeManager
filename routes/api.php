@@ -4,6 +4,7 @@ use App\Http\Controllers\Project\ProjectController;
 use App\Http\Controllers\Shared\ProgramController;
 use App\Http\Controllers\Task\TaskController;
 use App\Http\Controllers\TimeEntry\TimeEntryController;
+use App\Http\Controllers\User\AdminController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\user\ProfileController;
 
@@ -45,4 +46,19 @@ Route::middleware('auth:api')->group(function () {
 
     Route::patch('program/{program}/status', [ProgramController::class, 'isActive']);
     Route::apiResource('/program', ProgramController::class)->only(['index', 'store', 'update', 'destroy']);
+
+    Route::get('/users', [AdminController::class, 'getUsers']);
+
+    Route::get('/role', [AdminController::class, 'getRoles']);
+    Route::post('/role', [AdminController::class, 'addRole']);
+    Route::delete('/role/{role}', [AdminController::class, 'deleteRole']);
+    Route::patch("/user/{user}/role", [AdminController::class, 'updateRole']);
+
+    Route::patch('/user/{user}/ban', [AdminController::class, 'banUser']);
+    Route::patch('/user/{user}/unban', [AdminController::class, 'unbanUser']);
+
+    Route::patch('/user/{user}/stop/time_entry', [AdminController::class, 'forceStopTimeEntry']);
+
+    Route::get('/system/stat', [AdminController::class, 'getSystemStat']);
+    Route::get('/user/{user}/stat', [AdminController::class, 'getUserStat']);
 });

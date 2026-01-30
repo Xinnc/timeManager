@@ -4,6 +4,8 @@ namespace App\Domains\User\Models;
 
 use App\Domains\Project\Model\Project;
 use App\Domains\Shared\Model\Role;
+use App\Domains\TimeEntry\Model\TimeEntry;
+use App\Domains\User\DataTransferObjects\FilterUserData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -28,30 +30,55 @@ class User extends Authenticatable implements JWTSubject
         'last_name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'is_banned'
     ];
 
-    public function role(): BelongsTo {
+    public function role(): BelongsTo
+    {
         return $this->belongsTo(Role::class);
     }
 
-    public function projectEmployee(): BelongsToMany {
+    public function timeEntries(): HasMany
+    {
+        return $this->hasMany(TimeEntry::class);
+    }
+
+    public function projectEmployee(): BelongsToMany
+    {
         return $this->belongsToMany(Project::class, 'user_projects');
     }
 
-    public function projectManager(): HasMany {
+    public function projectManager(): HasMany
+    {
         return $this->hasMany(Project::class, 'manager_id');
     }
 
-    public function getRoleNameAttribute():? String {
+    public function getRoleNameAttribute(): ?string
+    {
         return $this->role?->role;
     }
 
-    public function getJWTIdentifier():string {
+    public function getJWTIdentifier(): string
+    {
         return $this->getKey();
     }
-    public function getJWTCustomClaims(): array {
+
+    public function getJWTCustomClaims(): array
+    {
         return [];
+    }
+
+    public function scopeFilter($query, FilterUserData $filter)
+    {
+        return $query
+            ->when($filter->role_id, fn ($q) => $q->where('role_id', $filter->role_id))
+            ->when($filter->is_banned, fn ($q) => $q->where('is_banned', $filter->is_banned))
+            ->when($filter->search, fn ($q) => $q->where(function ($qq) use ($filter) {
+                $qq->where('first_name', 'ilike', "%{$filter->search}%")
+                    ->orWhere('surname', 'ilike', "%{$filter->search}%")
+                    ->orWhere('email', 'ilike', "%{$filter->search}%");
+            }));
     }
 
     /**

@@ -17,7 +17,7 @@ class StoreTimeEntryAction
             'program_id' => $data->program_id,
             'start_time' => $data->start_time,
             'end_time' => $data->end_time,
-            'duration_minutes' => $data->start_time->diffInSeconds($data->end_time),
+            'duration_seconds' => $data->start_time->diffInSeconds($data->end_time),
             'is_manual' => true,
         ]);
 

@@ -16,7 +16,7 @@ class TimeEntryResource extends JsonResource
             'program' => $this->program->name ?? null,
             'start_time' => $this->start_time,
             'end_time' => $this->end_time,
-            'duration_seconds' => $this->duration_minutes,
+            'duration_seconds' => $this->duration_seconds,
             'is_manual' => $this->is_manual
         ];
     }

@@ -14,7 +14,8 @@ class ProfileResource extends JsonResource
             'surname' => $this->surname,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            'role' => $this->role_name
+            'role' => $this->role_name,
+            'is_banned' => $this->is_banned
         ];
     }
 }

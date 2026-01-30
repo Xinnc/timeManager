@@ -20,7 +20,7 @@ class TimeEntry extends Model
         'program_id',
         'start_time',
         'end_time',
-        'duration_minutes',
+        'duration_seconds',
         'is_manual',
     ];
 
